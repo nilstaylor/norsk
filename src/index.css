@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Fjord palette — Fjord navy + Aurora teal ── */
+:root {
+  --background: 210 20% 98%;
+  --foreground: 215 25% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 215 25% 12%;
+  --primary: 192 72% 28%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 192 30% 90%;
+  --secondary-foreground: 192 72% 20%;
+  --muted: 210 16% 93%;
+  --muted-foreground: 215 16% 48%;
+  --accent: 185 55% 35%;
+  --accent-foreground: 0 0% 100%;
+  --border: 214 20% 88%;
+  --input: 214 20% 88%;
+  --ring: 192 72% 28%;
+}
+
+.dark {
+  --background: 215 28% 9%;
+  --foreground: 210 20% 93%;
+  --card: 215 25% 13%;
+  --card-foreground: 210 20% 93%;
+  --primary: 185 60% 45%;
+  --primary-foreground: 215 28% 9%;
+  --secondary: 215 22% 20%;
+  --secondary-foreground: 185 60% 75%;
+  --muted: 215 22% 17%;
+  --muted-foreground: 215 16% 56%;
+  --accent: 185 55% 40%;
+  --accent-foreground: 0 0% 100%;
+  --border: 215 22% 22%;
+  --input: 215 22% 22%;
+  --ring: 185 60% 45%;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Progress bar animation */
+.progress-fill {
+  transition: width 0.4s ease;
+}
+
+/* Card flip animation */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card-flip-enter {
+  animation: fadeSlideIn 0.2s ease;
+}
+
+/* Shimmer skeleton */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--border)) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+/* Bold text in tips/intros rendered from markdown-like **bold** */
+.rich-text strong { font-weight: 700; }
