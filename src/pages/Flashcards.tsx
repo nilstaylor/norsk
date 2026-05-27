@@ -3,6 +3,7 @@ import { Check, X, RotateCcw, Layers, Grid3X3 } from "lucide-react";
 import { useAppState } from "../lib/state";
 import { VOCABULARY } from "../data";
 import type { VocabWord } from "../data";
+import { SpeakButton } from "../lib/speech";
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
 
@@ -144,7 +145,10 @@ function FlashcardMode({
         <div className="p-8 min-h-[200px] flex flex-col items-center justify-center text-center gap-4">
           {!flipped ? (
             <>
-              <div className="text-4xl font-bold text-foreground tracking-tight">{card?.norwegian}</div>
+              <div className="flex items-center gap-2 justify-center">
+                <span className="text-4xl font-bold text-foreground tracking-tight">{card?.norwegian}</span>
+                {card && <SpeakButton text={card.norwegian} size="lg" rate={0.85} label={`Pronounce ${card.norwegian}`} />}
+              </div>
               {card?.audioPhonetic && (
                 <div className="text-sm text-muted-foreground italic">/{card.audioPhonetic}/</div>
               )}
@@ -155,7 +159,10 @@ function FlashcardMode({
               <div className="text-3xl font-bold text-foreground">{card?.english}</div>
               {card?.example && (
                 <div className="mt-3 bg-muted/60 rounded-xl px-4 py-3 max-w-sm text-left">
-                  <div className="text-sm font-medium text-foreground">{card.example}</div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-sm font-medium text-foreground">{card.example}</span>
+                    <SpeakButton text={card.example} size="sm" rate={0.8} label="Hear example sentence" />
+                  </div>
                   <div className="text-xs text-muted-foreground mt-1 italic">{card.exampleTranslation}</div>
                 </div>
               )}
@@ -364,15 +371,24 @@ function MatchMode({
             const isMatched = matched.has(cell.word.id);
             return (
               <div key={cell.key} className="space-y-0.5">
-                <button
-                  className={cellClass(cell)}
-                  onClick={() => handleSelect(cell)}
-                  disabled={isMatched}
-                  style={{ width: "100%" }}
-                  data-testid={`match-no-${cell.word.id}`}
-                >
-                  {cell.word.norwegian}
-                </button>
+                <div className="flex items-center gap-1">
+                  <button
+                    className={cellClass(cell)}
+                    onClick={() => handleSelect(cell)}
+                    disabled={isMatched}
+                    style={{ flex: 1 }}
+                    data-testid={`match-no-${cell.word.id}`}
+                  >
+                    {cell.word.norwegian}
+                  </button>
+                  <SpeakButton
+                    text={cell.word.norwegian}
+                    size="sm"
+                    rate={0.85}
+                    label={`Pronounce ${cell.word.norwegian}`}
+                    className="shrink-0"
+                  />
+                </div>
                 {/* phonetic shown under Norwegian word */}
                 {cell.word.audioPhonetic && (
                   <div className={`text-center text-[11px] italic transition-opacity ${isMatched ? "text-emerald-500/60" : "text-muted-foreground"}`}>

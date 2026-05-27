@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
 import { VOCABULARY, CATEGORIES } from "../data";
+import { SpeakButton } from "../lib/speech";
 
 const categoryLabel: Record<string, string> = {
   greetings: "Greetings", numbers: "Numbers", emotions: "Emotions", adjectives: "Adjectives",
@@ -70,7 +71,10 @@ export default function Vocabulary() {
           <div key={v.id} className="bg-card border border-border rounded-xl p-4 hover:border-primary/30 transition-colors">
             <div className="flex items-start justify-between gap-2 mb-1.5">
               <div>
-                <div className="font-bold text-foreground">{v.norwegian}</div>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-bold text-foreground">{v.norwegian}</span>
+                  <SpeakButton text={v.norwegian} size="sm" label={`Pronounce ${v.norwegian}`} />
+                </div>
                 {v.audioPhonetic && <div className="text-xs text-primary/70 italic">/{v.audioPhonetic}/</div>}
               </div>
               <span className={`text-xs px-2 py-0.5 rounded-full font-medium shrink-0 ${difficultyColor[v.difficulty]}`}>{v.difficulty}</span>
@@ -78,7 +82,10 @@ export default function Vocabulary() {
             <div className="text-sm text-muted-foreground font-medium">{v.english}</div>
             {v.example && (
               <div className="mt-2 pt-2 border-t border-border/50 text-xs">
-                <div className="text-foreground italic">{v.example}</div>
+                <div className="flex items-center gap-1">
+                  <span className="text-foreground italic">{v.example}</span>
+                  <SpeakButton text={v.example} size="sm" rate={0.8} label={`Hear example: ${v.example}`} />
+                </div>
                 <div className="text-muted-foreground mt-0.5">{v.exampleTranslation}</div>
               </div>
             )}

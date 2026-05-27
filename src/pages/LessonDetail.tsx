@@ -3,6 +3,7 @@ import { useParams, useLocation } from "wouter";
 import { ArrowLeft, CheckCircle, XCircle, Star, ChevronRight } from "lucide-react";
 import { useAppState } from "../lib/state";
 import { LESSONS, VOCABULARY, type LessonContent, type LessonSection } from "../data";
+import { SpeakButton } from "../lib/speech";
 
 function MarkdownText({ text }: { text: string }) {
   const html = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
@@ -36,7 +37,10 @@ function SectionRenderer({ section, vocabMap }: { section: LessonSection; vocabM
             const entry = vocabMap[word];
             return (
               <div key={word} className="bg-card border border-border rounded-lg p-3">
-                <div className="font-semibold text-foreground text-sm">{word}</div>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-semibold text-foreground text-sm">{word}</span>
+                  <SpeakButton text={word} size="sm" rate={0.85} />
+                </div>
                 <div className="text-xs text-muted-foreground mt-0.5">{entry?.english || "—"}</div>
                 {entry?.audioPhonetic && <div className="text-xs text-primary/70 mt-0.5 italic">/{entry.audioPhonetic}/</div>}
               </div>
@@ -61,7 +65,10 @@ function SectionRenderer({ section, vocabMap }: { section: LessonSection; vocabM
                 </div>
                 <div className={`max-w-xs flex flex-col ${isRight ? "items-end" : "items-start"}`}>
                   <div className="bg-muted rounded-xl px-3 py-2 text-sm">
-                    <div className="font-medium text-foreground">{line.text}</div>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="font-medium text-foreground">{line.text}</span>
+                      <SpeakButton text={line.text} size="sm" rate={0.85} label={`Hear: ${line.text}`} />
+                    </div>
                     <div className="text-xs text-muted-foreground mt-0.5 italic">{line.translation}</div>
                   </div>
                 </div>
@@ -94,7 +101,10 @@ function SectionRenderer({ section, vocabMap }: { section: LessonSection; vocabM
           {section.phrases.map((p, pi) => (
             <div key={pi} className="flex items-start gap-4 px-4 py-3 border-b border-border/60 last:border-b-0 hover:bg-muted/20 transition-colors">
               <div className="flex-1">
-                <div className="font-semibold text-foreground text-sm">{p.norwegian}</div>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-semibold text-foreground text-sm">{p.norwegian}</span>
+                  <SpeakButton text={p.norwegian} size="sm" rate={0.85} />
+                </div>
                 {p.phonetic && <div className="text-xs text-primary/70 italic mt-0.5">/{p.phonetic}/</div>}
               </div>
               <div className="text-sm text-muted-foreground shrink-0 text-right">{p.english}</div>

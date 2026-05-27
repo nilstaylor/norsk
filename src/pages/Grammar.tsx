@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BookMarked, ChevronDown, ChevronUp } from "lucide-react";
+import { SpeakButton } from "../lib/speech";
 
 type CardProps = { title: string; subtitle?: string; defaultOpen?: boolean; children: React.ReactNode };
 
@@ -36,7 +37,14 @@ function ConjTable({ rows, headers }: { rows: string[][]; headers: string[] }) {
           {rows.map((row, ri) => (
             <tr key={ri} className="border-b border-border/60 last:border-b-0 hover:bg-muted/20 transition-colors">
               {row.map((cell, ci) => (
-                <td key={ci} className={`px-3 py-2.5 ${ci === 0 ? "font-semibold text-primary text-sm" : ci === 1 ? "font-medium text-foreground" : "text-muted-foreground"}`}>{cell}</td>
+                <td key={ci} className={`px-3 py-2.5 ${ci === 0 ? "font-semibold text-primary text-sm" : ci === 1 ? "font-medium text-foreground" : "text-muted-foreground"}`}>
+                  {(ci === 0 || ci === 1) ? (
+                    <span className="inline-flex items-center gap-1">
+                      {cell}
+                      {ci === 0 && <SpeakButton text={cell.replace(/^å /, '')} size="sm" rate={0.85} />}
+                    </span>
+                  ) : cell}
+                </td>
               ))}
             </tr>
           ))}
@@ -59,7 +67,11 @@ function AdjCard({ gender, tag, indef, def, pl, defPl, example }: { gender: stri
         <div><div className="text-xs text-muted-foreground uppercase tracking-wide mb-0.5">Plural</div><div className="font-medium text-foreground">{pl}</div></div>
         <div><div className="text-xs text-muted-foreground uppercase tracking-wide mb-0.5">Definite Plural</div><div className="font-medium text-foreground">{defPl}</div></div>
       </div>
-      <div className="text-xs text-primary/80 italic border-t border-border/50 pt-2 mt-2">{example}</div>
+      <div className="flex items-center gap-1.5 border-t border-border/50 pt-2 mt-2">
+        <span className="text-xs text-primary/80 italic">{example.split(" — ")[0]}</span>
+        <SpeakButton text={example.split(" — ")[0]} size="sm" rate={0.85} />
+        {example.includes(" — ") && <span className="text-xs text-muted-foreground">— {example.split(" — ")[1]}</span>}
+      </div>
     </div>
   );
 }
@@ -74,12 +86,20 @@ function TipBox({ children }: { children: React.ReactNode }) {
 }
 
 function PrepRow({ prep, meaning, example }: { prep: string; meaning: string; example: string }) {
+  const [norw, eng] = example.includes(" — ") ? example.split(" — ") : [example, ""];
   return (
     <div className="flex items-start gap-3 py-2.5 border-b border-border/60 last:border-b-0">
-      <div className="w-24 shrink-0"><span className="font-bold text-primary text-sm">{prep}</span></div>
+      <div className="w-24 shrink-0 flex items-center gap-1">
+        <span className="font-bold text-primary text-sm">{prep}</span>
+        <SpeakButton text={prep} size="sm" rate={0.85} />
+      </div>
       <div className="flex-1">
         <div className="text-sm font-medium text-foreground">{meaning}</div>
-        <div className="text-xs text-muted-foreground italic mt-0.5">{example}</div>
+        <div className="flex items-center gap-1 mt-0.5">
+          <span className="text-xs text-muted-foreground italic">{norw}</span>
+          <SpeakButton text={norw} size="sm" rate={0.8} />
+          {eng && <span className="text-xs text-muted-foreground">— {eng}</span>}
+        </div>
       </div>
     </div>
   );
