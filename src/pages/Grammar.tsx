@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { BookMarked, ChevronDown, ChevronUp } from "lucide-react";
+import { BookMarked, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import { SpeakButton } from "../lib/speech";
+import { Link } from "wouter";
 
 type CardProps = { title: string; subtitle?: string; defaultOpen?: boolean; children: React.ReactNode };
 
@@ -162,6 +163,38 @@ const prepositions = [
   { prep:"i kjelleren", meaning:"in the basement", example:"Bilen er i kjelleren. — The car is in the basement." },
 ];
 
+// ── Word order position pill ──────────────────────────────────────────────────
+function PosPill({ label, role, accent = false }: { label: string; role: string; accent?: boolean }) {
+  return (
+    <div className="flex flex-col items-center gap-1">
+      <div className={`px-3 py-1.5 rounded-lg text-sm font-bold whitespace-nowrap ${
+        accent
+          ? "bg-primary text-primary-foreground"
+          : "bg-muted text-foreground border border-border"
+      }`}>
+        {label}
+      </div>
+      <div className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">{role}</div>
+    </div>
+  );
+}
+
+function WordOrderDiagram({ parts, connector }: { parts: { label: string; role: string; accent?: boolean }[]; connector?: string }) {
+  return (
+    <div className="flex flex-wrap items-end gap-2 py-1">
+      {parts.map((p, i) => (
+        <>
+          <PosPill key={i} {...p} />
+          {i < parts.length - 1 && (
+            <ArrowRight size={14} className="text-muted-foreground mb-3" />
+          )}
+        </>
+      ))}
+      {connector && <span className="text-xs text-muted-foreground mb-3 ml-1">{connector}</span>}
+    </div>
+  );
+}
+
 export default function Grammar() {
   return (
     <div className="space-y-6">
@@ -172,6 +205,242 @@ export default function Grammar() {
           <p className="text-sm text-muted-foreground mt-0.5">Grammar reference cards — verb conjugation, adjective agreement, articles &amp; prepositions.</p>
         </div>
       </div>
+
+      {/* ── FEATURED: Sentence Structure & Word Order ── */}
+      <section>
+        <div className="flex items-center gap-2 mb-3 px-1">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-primary">⭐ Featured</span>
+          <h2 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Sentence Structure & Word Order — Setningsstruktur</h2>
+        </div>
+        <div className="bg-gradient-to-br from-primary/8 via-primary/4 to-transparent border border-primary/30 rounded-2xl p-5 space-y-5">
+
+          {/* Intro callout */}
+          <div className="flex items-start gap-3">
+            <div className="text-2xl">📐</div>
+            <div>
+              <div className="font-bold text-foreground text-sm">The V2 Rule — Verbandreregelen</div>
+              <div className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                In Norwegian, <strong className="text-foreground">the verb always comes second</strong> in a main clause — no matter what appears first.
+                This is the single most important rule in Norwegian grammar.
+              </div>
+              <Link href="/lessons/14">
+                <span className="inline-flex items-center gap-1 mt-2 text-xs font-semibold text-primary hover:underline cursor-pointer">
+                  Open full lesson with 10-question quiz <ArrowRight size={11} />
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Rule 1: SVO */}
+          <GrammarCard title="Rule 1 — Basic SVO: Subject · Verb · Object" subtitle="The default order when the subject starts the sentence" defaultOpen>
+            <div className="space-y-4">
+              <WordOrderDiagram parts={[
+                { label: "Jeg",    role: "Subject" },
+                { label: "spiser", role: "Verb", accent: true },
+                { label: "et eple",role: "Object" },
+              ]} />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                {[
+                  ["Jeg spiser et eple.", "I eat an apple."],
+                  ["Hun leser en bok.", "She reads a book."],
+                  ["Vi bor i Oslo.", "We live in Oslo."],
+                  ["De liker musikk.", "They like music."],
+                ].map(([no, en]) => (
+                  <div key={no} className="flex items-center gap-2 bg-card/70 rounded-lg px-3 py-2 border border-border/60">
+                    <div className="flex-1">
+                      <div className="font-medium text-foreground">{no}</div>
+                      <div className="text-xs text-muted-foreground italic">{en}</div>
+                    </div>
+                    <SpeakButton text={no} size="sm" rate={0.85} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </GrammarCard>
+
+          {/* Rule 2: Inversion */}
+          <GrammarCard title="Rule 2 — Inversion: Any Fronted Element + Verb Second" subtitle="When time/place/adverb leads, subject and verb swap" defaultOpen>
+            <div className="space-y-4">
+              <TipBox>
+                If anything other than the subject starts the sentence, <strong>invert</strong> the subject and verb so the verb stays in position 2.
+              </TipBox>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Normal SVO</div>
+                  <WordOrderDiagram parts={[
+                    { label: "Jeg",    role: "Subject" },
+                    { label: "spiser", role: "Verb ②", accent: true },
+                    { label: "lunsj",  role: "Object" },
+                    { label: "i dag",  role: "Time" },
+                  ]} />
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-primary uppercase tracking-wide mb-2">Inverted (time first)</div>
+                  <WordOrderDiagram parts={[
+                    { label: "I dag",  role: "Time ①", accent: false },
+                    { label: "spiser", role: "Verb ②", accent: true },
+                    { label: "jeg",    role: "Subject ③" },
+                    { label: "lunsj",  role: "Object" },
+                  ]} />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                {[
+                  ["I dag jobber jeg hjemme.",       "Today I work from home."],
+                  ["I morgen reiser vi til Bergen.",  "Tomorrow we travel to Bergen."],
+                  ["Nå leser han avisen.",            "Now he is reading the newspaper."],
+                  ["Derfor drikker vi kaffe.",        "Therefore we drink coffee."],
+                ].map(([no, en]) => (
+                  <div key={no} className="flex items-center gap-2 bg-card/70 rounded-lg px-3 py-2 border border-border/60">
+                    <div className="flex-1">
+                      <div className="font-medium text-foreground">{no}</div>
+                      <div className="text-xs text-muted-foreground italic">{en}</div>
+                    </div>
+                    <SpeakButton text={no} size="sm" rate={0.85} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </GrammarCard>
+
+          {/* Rule 3: Questions */}
+          <GrammarCard title="Rule 3 — Questions" subtitle="Yes/No: verb first · Wh-questions: question word then verb">
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Yes/No — Verb First</div>
+                  <WordOrderDiagram parts={[
+                    { label: "Liker", role: "Verb ①", accent: true },
+                    { label: "du",    role: "Subject" },
+                    { label: "kaffe?",role: "Object" },
+                  ]} />
+                  <div className="space-y-1.5 mt-3">
+                    {[
+                      ["Spiser du frokost?", "Do you eat breakfast?"],
+                      ["Er hun norsk?",       "Is she Norwegian?"],
+                      ["Kan du hjelpe meg?",  "Can you help me?"],
+                    ].map(([no, en]) => (
+                      <div key={no} className="flex items-center gap-2 bg-card/70 rounded-lg px-3 py-2 border border-border/60 text-sm">
+                        <div className="flex-1">
+                          <div className="font-medium text-foreground">{no}</div>
+                          <div className="text-xs text-muted-foreground italic">{en}</div>
+                        </div>
+                        <SpeakButton text={no} size="sm" rate={0.85} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Wh-Questions</div>
+                  <WordOrderDiagram parts={[
+                    { label: "Hvor", role: "Wh-word" },
+                    { label: "bor",  role: "Verb ②", accent: true },
+                    { label: "du?",  role: "Subject" },
+                  ]} />
+                  <div className="space-y-1.5 mt-3">
+                    {[
+                      ["Hva spiser du?",    "What do you eat?"],
+                      ["Hvem er hun?",       "Who is she?"],
+                      ["Hvorfor gråter han?","Why is he crying?"],
+                    ].map(([no, en]) => (
+                      <div key={no} className="flex items-center gap-2 bg-card/70 rounded-lg px-3 py-2 border border-border/60 text-sm">
+                        <div className="flex-1">
+                          <div className="font-medium text-foreground">{no}</div>
+                          <div className="text-xs text-muted-foreground italic">{en}</div>
+                        </div>
+                        <SpeakButton text={no} size="sm" rate={0.85} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </GrammarCard>
+
+          {/* Rule 4: Negation */}
+          <GrammarCard title="Rule 4 — Negation with 'ikke'" subtitle="After verb in main clause · Before verb in subordinate clause">
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-2">Main clause — ikke after verb</div>
+                  <WordOrderDiagram parts={[
+                    { label: "Jeg",    role: "Subject" },
+                    { label: "spiser", role: "Verb", accent: true },
+                    { label: "ikke",   role: "Negation", accent: false },
+                    { label: "kjøtt.",  role: "Object" },
+                  ]} />
+                  <div className="space-y-1.5 mt-3">
+                    {[
+                      ["Hun liker ikke regn.",      "She does not like rain."],
+                      ["Vi er ikke trøtte.",         "We are not tired."],
+                      ["De snakker ikke norsk.",    "They don't speak Norwegian."],
+                    ].map(([no, en]) => (
+                      <div key={no} className="flex items-center gap-2 bg-card/70 rounded-lg px-3 py-2 border border-border/60 text-sm">
+                        <div className="flex-1">
+                          <div className="font-medium text-foreground">{no}</div>
+                          <div className="text-xs text-muted-foreground italic">{en}</div>
+                        </div>
+                        <SpeakButton text={no} size="sm" rate={0.85} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 uppercase tracking-wide mb-2">Subordinate clause — ikke before verb</div>
+                  <WordOrderDiagram parts={[
+                    { label: "at hun",  role: "Conj + Subj" },
+                    { label: "ikke",    role: "Negation", accent: false },
+                    { label: "kan",     role: "Verb", accent: true },
+                    { label: "komme",   role: "Inf." },
+                  ]} />
+                  <div className="space-y-1.5 mt-3">
+                    {[
+                      ["Jeg vet at han ikke er her.", "I know that he is not here."],
+                      ["Hun sier at hun ikke kan komme.", "She says she cannot come."],
+                      ["Fordi vi ikke har tid.", "Because we don't have time."],
+                    ].map(([no, en]) => (
+                      <div key={no} className="flex items-center gap-2 bg-card/70 rounded-lg px-3 py-2 border border-border/60 text-sm">
+                        <div className="flex-1">
+                          <div className="font-medium text-foreground">{no}</div>
+                          <div className="text-xs text-muted-foreground italic">{en}</div>
+                        </div>
+                        <SpeakButton text={no} size="sm" rate={0.85} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </GrammarCard>
+
+          {/* Quick cheat-sheet */}
+          <div className="bg-card/80 border border-border rounded-xl p-4">
+            <div className="font-semibold text-foreground text-sm mb-3">Quick Cheat Sheet — Hurtigoversikt</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {[
+                { rule: "Basic statement",    pattern: "Subject → Verb → Object",              ex: "Jeg spiser mat." },
+                { rule: "Inversion",          pattern: "[Adverb] → Verb → Subject → ...",       ex: "I dag spiser jeg mat." },
+                { rule: "Yes/No question",    pattern: "Verb → Subject → Object?",              ex: "Spiser du mat?" },
+                { rule: "Wh-question",        pattern: "Wh-word → Verb → Subject?",             ex: "Hva spiser du?" },
+                { rule: "Negation (main)",    pattern: "Subject → Verb → ikke → ...",           ex: "Jeg spiser ikke kjøtt." },
+                { rule: "Negation (sub)",     pattern: "Conj → Subject → ikke → Verb",          ex: "...at hun ikke spiser kjøtt." },
+                { rule: "Adverbial order",    pattern: "Time → Manner → Place",                  ex: "I morgen med tog til Oslo." },
+                { rule: "Subordinate clause", pattern: "Conj + Subject + [ikke] + Verb (+ rest)",ex: "fordi jeg elsker Norge." },
+              ].map(({ rule, pattern, ex }) => (
+                <div key={rule} className="bg-muted/30 rounded-lg px-3 py-2.5 space-y-0.5">
+                  <div className="text-xs font-bold text-primary">{rule}</div>
+                  <div className="text-xs text-muted-foreground font-mono">{pattern}</div>
+                  <div className="flex items-center gap-1">
+                    <span className="text-xs text-foreground italic">{ex}</span>
+                    <SpeakButton text={ex} size="sm" rate={0.85} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
 
       <section>
         <h2 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3 px-1">Verb Conjugation — Verbkonjugasjon</h2>

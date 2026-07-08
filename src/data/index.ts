@@ -645,6 +645,215 @@ export const LESSONS: Lesson[] = [
       ],
     },
   },
+  // ── Lesson 14: Sentence Structure & Word Order ──────────────────────────
+  {
+    id: 14,
+    title: "Sentence Structure & Word Order",
+    titleNorwegian: "Setningsstruktur og ordstilling",
+    description: "Master how Norwegian sentences are built — SVO order, V2 rule, questions, negation, and subordinate clauses.",
+    category: "grammar",
+    difficulty: "intermediate",
+    order: 14,
+    xpReward: 30,
+    content: {
+      sections: [
+        {
+          type: "intro",
+          text: "Norwegian word order is one of the most important — and most learnable — aspects of the language. Once you understand the core rules, you can build an enormous range of sentences confidently. The good news: Norwegian follows many of the same patterns as English, with a few crucial twists.",
+        },
+        {
+          type: "tip",
+          text: "**The Golden Rule:** In Norwegian, the **verb always comes second** in a main clause — no matter what. This is called the V2 (verb-second) rule. If any word or phrase other than the subject starts the sentence, the subject and verb swap places (inversion).",
+        },
+        {
+          type: "phrase_group",
+          title: "Rule 1 — Basic SVO Order (Subject · Verb · Object)",
+          phrases: [
+            { norwegian: "Jeg spiser et eple.", english: "I eat an apple.", phonetic: "yay SPEE-ser et EP-leh" },
+            { norwegian: "Hun leser en bok.", english: "She reads a book.", phonetic: "hoon LEH-ser en book" },
+            { norwegian: "Vi bor i Oslo.", english: "We live in Oslo.", phonetic: "vee boor ee OSH-loh" },
+            { norwegian: "De liker musikk.", english: "They like music.", phonetic: "dee LEE-ker moo-SIK" },
+            { norwegian: "Han kjøper mat.", english: "He buys food.", phonetic: "hahn SHOH-per maht" },
+          ],
+        },
+        {
+          type: "tip",
+          text: "**Inversion (V2 rule in action):** When a time word, place, or adverb starts the sentence, the verb still stays second — so the subject moves to third position. This is called **inversion** (omvendt rekkefølge). Example: *I dag spiser jeg et eple.* (Today I eat an apple.) The verb 'spiser' stays in position 2.",
+        },
+        {
+          type: "phrase_group",
+          title: "Rule 2 — Inversion: Time/Place First → Verb Second",
+          phrases: [
+            { norwegian: "I dag jobber jeg hjemme.", english: "Today I work from home.", phonetic: "ee dahg YOB-er yay YEM-eh" },
+            { norwegian: "I morgen reiser vi til Bergen.", english: "Tomorrow we travel to Bergen.", phonetic: "ee MOR-en RAY-ser vee" },
+            { norwegian: "Nå leser han avisen.", english: "Now he is reading the newspaper.", phonetic: "noh LEH-ser hahn AH-vee-sen" },
+            { norwegian: "Her bor hun alene.", english: "Here she lives alone.", phonetic: "hair boor hoon ah-LEH-neh" },
+            { norwegian: "Derfor drikker vi kaffe.", english: "Therefore we drink coffee.", phonetic: "DAIR-for DRIK-er vee KAF-eh" },
+          ],
+        },
+        {
+          type: "phrase_group",
+          title: "Rule 3 — Yes/No Questions: Verb First",
+          phrases: [
+            { norwegian: "Spiser du frokost?", english: "Do you eat breakfast?", phonetic: "SPEE-ser doo FROH-kost" },
+            { norwegian: "Liker du kaffe?", english: "Do you like coffee?", phonetic: "LEE-ker doo KAF-eh" },
+            { norwegian: "Er hun norsk?", english: "Is she Norwegian?", phonetic: "air hoon norsk" },
+            { norwegian: "Har de barn?", english: "Do they have children?", phonetic: "har dee barn" },
+            { norwegian: "Kan du hjelpe meg?", english: "Can you help me?", phonetic: "kan doo YEL-peh may" },
+          ],
+        },
+        {
+          type: "phrase_group",
+          title: "Rule 4 — Wh-Questions: Question Word · Verb · Subject",
+          phrases: [
+            { norwegian: "Hva spiser du?", english: "What do you eat?", phonetic: "vah SPEE-ser doo" },
+            { norwegian: "Hvor bor du?", english: "Where do you live?", phonetic: "vor boor doo" },
+            { norwegian: "Hvem er hun?", english: "Who is she?", phonetic: "vem air hoon" },
+            { norwegian: "Når kommer toget?", english: "When does the train come?", phonetic: "nor KOM-er TOO-geh" },
+            { norwegian: "Hvorfor gråter han?", english: "Why is he crying?", phonetic: "VOR-for GROH-ter hahn" },
+            { norwegian: "Hvordan lager du det?", english: "How do you make it?", phonetic: "VOR-dan LAH-ger doo day" },
+          ],
+        },
+        {
+          type: "tip",
+          text: "**Negation:** Place **ikke** (not) directly after the verb in main clauses: *Jeg spiser ikke kjøtt.* (I do not eat meat.) In subordinate clauses, **ikke** comes BEFORE the verb: *Jeg vet at han ikke spiser kjøtt.* (I know that he does not eat meat.) This is one of the most common mistakes — memorize both positions.",
+        },
+        {
+          type: "phrase_group",
+          title: "Rule 5 — Negation with 'ikke' (not)",
+          phrases: [
+            { norwegian: "Jeg spiser ikke kjøtt.", english: "I do not eat meat.", phonetic: "yay SPEE-ser IK-eh shoot" },
+            { norwegian: "Hun liker ikke regn.", english: "She does not like rain.", phonetic: "hoon LEE-ker IK-eh rayn" },
+            { norwegian: "Vi er ikke trøtte.", english: "We are not tired.", phonetic: "vee air IK-eh TRUT-eh" },
+            { norwegian: "Han kommer ikke i dag.", english: "He is not coming today.", phonetic: "hahn KOM-er IK-eh ee dahg" },
+            { norwegian: "De snakker ikke norsk.", english: "They do not speak Norwegian.", phonetic: "dee SNAK-er IK-eh norsk" },
+          ],
+        },
+        {
+          type: "tip",
+          text: "**Subordinate Clauses (leddsetninger):** When a clause is introduced by a conjunction like *at* (that), *fordi* (because), *hvis* (if), *når* (when), *selv om* (even though) — the verb goes to the END and **ikke** moves BEFORE the verb. Pattern: **Conjunction + Subject + [ikke] + Verb**: *fordi hun ikke snakker norsk* (because she does not speak Norwegian).",
+        },
+        {
+          type: "phrase_group",
+          title: "Rule 6 — Subordinate Clauses",
+          phrases: [
+            { norwegian: "Jeg vet at han er her.", english: "I know that he is here.", phonetic: "yay veht at hahn air hair" },
+            { norwegian: "Hun sier at hun ikke kan komme.", english: "She says that she cannot come.", phonetic: "hoon SEE-er at hoon IK-eh kan KOM-eh" },
+            { norwegian: "Jeg lærer norsk fordi jeg elsker Norge.", english: "I learn Norwegian because I love Norway.", phonetic: "yay LAIR-er norsk FOR-dee yay EL-sker NOR-geh" },
+            { norwegian: "Hvis det regner, blir vi hjemme.", english: "If it rains, we will stay home.", phonetic: "viss day RAYN-er bleer vee YEM-eh" },
+            { norwegian: "Han leser selv om han er trøtt.", english: "He reads even though he is tired.", phonetic: "hahn LEH-ser selvm om hahn air trut" },
+          ],
+        },
+        {
+          type: "dialogue",
+          lines: [
+            { speaker: "A", text: "Hva gjør du i dag?", translation: "What are you doing today?" },
+            { speaker: "B", text: "I dag studerer jeg norsk hjemme.", translation: "Today I am studying Norwegian at home." },
+            { speaker: "A", text: "Snakker du ikke norsk allerede?", translation: "Don't you speak Norwegian already?" },
+            { speaker: "B", text: "Nei, ikke ennå. Men jeg øver hver dag.", translation: "No, not yet. But I practice every day." },
+            { speaker: "A", text: "Hvorfor liker du norsk?", translation: "Why do you like Norwegian?" },
+            { speaker: "B", text: "Fordi det er et vakkert språk, og jeg vil bo i Norge.", translation: "Because it is a beautiful language, and I want to live in Norway." },
+          ],
+        },
+        {
+          type: "tip",
+          text: "**Time–Manner–Place order:** Norwegian prefers this sequence for adverbials: WHEN → HOW → WHERE. Example: *Jeg reiser i morgen med tog til Oslo.* (I travel tomorrow by train to Oslo.) You don't have to be perfect, but this order sounds most natural.",
+        },
+      ],
+      quiz: [
+        {
+          question: "Which word order is correct for a basic Norwegian statement?",
+          options: ["Object · Subject · Verb", "Verb · Subject · Object", "Subject · Verb · Object", "Subject · Object · Verb"],
+          answer: 2,
+        },
+        {
+          question: "You want to say 'Today I eat lunch.' Which sentence uses correct V2 inversion?",
+          options: [
+            "Jeg spiser i dag lunsj.",
+            "I dag jeg spiser lunsj.",
+            "I dag spiser jeg lunsj.",
+            "Spiser jeg lunsj i dag.",
+          ],
+          answer: 2,
+        },
+        {
+          question: "Where does 'ikke' (not) go in a main clause?",
+          options: [
+            "Before the subject",
+            "After the verb",
+            "At the end of the sentence",
+            "Before the object",
+          ],
+          answer: 1,
+        },
+        {
+          question: "How do you form a yes/no question in Norwegian?",
+          options: [
+            "Add 'er' at the end",
+            "Put the verb first",
+            "Put the subject first with rising intonation",
+            "Use 'ikke' before the verb",
+          ],
+          answer: 1,
+        },
+        {
+          question: "Which is the correct wh-question for 'Where do you live?'",
+          options: ["Du bor hvor?", "Hvor du bor?", "Bor du hvor?", "Hvor bor du?"],
+          answer: 3,
+        },
+        {
+          question: "In a subordinate clause starting with 'fordi' (because), where does 'ikke' go?",
+          options: [
+            "After the verb",
+            "Before the verb",
+            "At the very end",
+            "Before the conjunction",
+          ],
+          answer: 1,
+        },
+        {
+          question: "Which sentence correctly says 'She says that she cannot come'?",
+          options: [
+            "Hun sier at hun kan ikke komme.",
+            "Hun sier at hun ikke kan komme.",
+            "Hun ikke sier at hun kan komme.",
+            "Hun sier ikke at hun kan komme.",
+          ],
+          answer: 1,
+        },
+        {
+          question: "'Hver dag leser han avisen.' What rule does this sentence demonstrate?",
+          options: [
+            "Verb-first questions",
+            "SVO basic order",
+            "V2 inversion — time phrase first, verb second",
+            "Subordinate clause structure",
+          ],
+          answer: 2,
+        },
+        {
+          question: "What is the correct preferred order for adverbials in Norwegian?",
+          options: [
+            "Place · Time · Manner",
+            "Manner · Place · Time",
+            "Time · Place · Manner",
+            "Time · Manner · Place",
+          ],
+          answer: 3,
+        },
+        {
+          question: "Which sentence correctly translates 'I learn Norwegian because I love Norway'?",
+          options: [
+            "Jeg lærer norsk fordi jeg elsker Norge.",
+            "Fordi jeg elsker Norge, norsk lærer jeg.",
+            "Jeg lærer norsk, fordi elsker jeg Norge.",
+            "Norsk fordi jeg lærer elsker jeg Norge.",
+          ],
+          answer: 0,
+        },
+      ],
+    },
+  },
 ];
 
 // ──────────────────────────────────────────────────────────────
