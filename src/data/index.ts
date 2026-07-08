@@ -650,7 +650,7 @@ export const LESSONS: Lesson[] = [
     id: 14,
     title: "Sentence Structure & Word Order",
     titleNorwegian: "Setningsstruktur og ordstilling",
-    description: "Master how Norwegian sentences are built — SVO order, V2 rule, questions, negation, and subordinate clauses.",
+    description: "Learn how Norwegian sentences are put together — with fun rules, easy examples, and a quiz to test what you know!",
     category: "grammar",
     difficulty: "intermediate",
     order: 14,
@@ -659,15 +659,15 @@ export const LESSONS: Lesson[] = [
       sections: [
         {
           type: "intro",
-          text: "Norwegian word order is one of the most important — and most learnable — aspects of the language. Once you understand the core rules, you can build an enormous range of sentences confidently. The good news: Norwegian follows many of the same patterns as English, with a few crucial twists.",
+          text: "Have you ever played with building blocks? A Norwegian sentence is just like that — every word has its own special spot. Once you know the spots, you can build almost ANY sentence! Let\'s learn the secret blueprint.",
         },
         {
           type: "tip",
-          text: "**The Golden Rule:** In Norwegian, the **verb always comes second** in a main clause — no matter what. This is called the V2 (verb-second) rule. If any word or phrase other than the subject starts the sentence, the subject and verb swap places (inversion).",
+          text: "🧲 **The Action Word is Like a Magnet!** In Norwegian, the action word (verb) ALWAYS sticks to spot number 2 in the sentence. No matter what. Always. Even if you put a time word or place word first, the action word stays in spot #2. This is called the **V2 Rule**.",
         },
         {
           type: "phrase_group",
-          title: "Rule 1 — Basic SVO Order (Subject · Verb · Object)",
+          title: "Rule 1 — The Basic Blueprint: Who · Does · What",
           phrases: [
             { norwegian: "Jeg spiser et eple.", english: "I eat an apple.", phonetic: "yay SPEE-ser et EP-leh" },
             { norwegian: "Hun leser en bok.", english: "She reads a book.", phonetic: "hoon LEH-ser en book" },
@@ -678,11 +678,11 @@ export const LESSONS: Lesson[] = [
         },
         {
           type: "tip",
-          text: "**Inversion (V2 rule in action):** When a time word, place, or adverb starts the sentence, the verb still stays second — so the subject moves to third position. This is called **inversion** (omvendt rekkefølge). Example: *I dag spiser jeg et eple.* (Today I eat an apple.) The verb 'spiser' stays in position 2.",
+          text: "🔀 **The Switcheroo!** What if you start the sentence with a time word like \"Today\" or \"Yesterday\"? The action word still has to stay in spot #2 — so the \"who\" word jumps to spot #3. This swap is called **inversion**. Think of it as a switcheroo: Time → Action Word → Who. Example: *I dag spiser jeg et eple.* (Today [spot 1] eat [spot 2] I [spot 3] an apple.)",
         },
         {
           type: "phrase_group",
-          title: "Rule 2 — Inversion: Time/Place First → Verb Second",
+          title: "Rule 2 — The Switcheroo: Time/Place First → Action Word Still Second!",
           phrases: [
             { norwegian: "I dag jobber jeg hjemme.", english: "Today I work from home.", phonetic: "ee dahg YOB-er yay YEM-eh" },
             { norwegian: "I morgen reiser vi til Bergen.", english: "Tomorrow we travel to Bergen.", phonetic: "ee MOR-en RAY-ser vee" },
@@ -693,7 +693,7 @@ export const LESSONS: Lesson[] = [
         },
         {
           type: "phrase_group",
-          title: "Rule 3 — Yes/No Questions: Verb First",
+          title: "Rule 3 — Asking Yes/No Questions: Put the Action Word FIRST!",
           phrases: [
             { norwegian: "Spiser du frokost?", english: "Do you eat breakfast?", phonetic: "SPEE-ser doo FROH-kost" },
             { norwegian: "Liker du kaffe?", english: "Do you like coffee?", phonetic: "LEE-ker doo KAF-eh" },
@@ -703,8 +703,12 @@ export const LESSONS: Lesson[] = [
           ],
         },
         {
+          type: "tip",
+          text: "🚫 **No \"Do\" in Norwegian!** In English we say \"Do you speak Norwegian?\" Norwegian does NOT use \"do\" like that. You just put the action word first: *Snakker du norsk?* (Speak you Norwegian?) Simple!",
+        },
+        {
           type: "phrase_group",
-          title: "Rule 4 — Wh-Questions: Question Word · Verb · Subject",
+          title: "Rule 4 — Question Words: Hva/Hvor/Hvem + Action Word + Who",
           phrases: [
             { norwegian: "Hva spiser du?", english: "What do you eat?", phonetic: "vah SPEE-ser doo" },
             { norwegian: "Hvor bor du?", english: "Where do you live?", phonetic: "vor boor doo" },
@@ -716,11 +720,11 @@ export const LESSONS: Lesson[] = [
         },
         {
           type: "tip",
-          text: "**Negation:** Place **ikke** (not) directly after the verb in main clauses: *Jeg spiser ikke kjøtt.* (I do not eat meat.) In subordinate clauses, **ikke** comes BEFORE the verb: *Jeg vet at han ikke spiser kjøtt.* (I know that he does not eat meat.) This is one of the most common mistakes — memorize both positions.",
+          text: "❌ **The \"ikke\" Test — Super Important!** \"Ikke\" means \"not.\" Here is the secret test: In a normal sentence, say the action word FIRST, then \"ikke\": *Jeg spiser ikke* (I eat not). In a \"because/if/when\" sentence, say \"ikke\" BEFORE the action word: *fordi han ikke spiser* (because he not eats). This one rule tells you exactly which type of sentence you are in!",
         },
         {
           type: "phrase_group",
-          title: "Rule 5 — Negation with 'ikke' (not)",
+          title: "Rule 5 — Saying \"Not\": ikke After the Action Word (Normal Sentences)",
           phrases: [
             { norwegian: "Jeg spiser ikke kjøtt.", english: "I do not eat meat.", phonetic: "yay SPEE-ser IK-eh shoot" },
             { norwegian: "Hun liker ikke regn.", english: "She does not like rain.", phonetic: "hoon LEE-ker IK-eh rayn" },
@@ -731,11 +735,11 @@ export const LESSONS: Lesson[] = [
         },
         {
           type: "tip",
-          text: "**Subordinate Clauses (leddsetninger):** When a clause is introduced by a conjunction like *at* (that), *fordi* (because), *hvis* (if), *når* (when), *selv om* (even though) — the verb goes to the END and **ikke** moves BEFORE the verb. Pattern: **Conjunction + Subject + [ikke] + Verb**: *fordi hun ikke snakker norsk* (because she does not speak Norwegian).",
+          text: "🔗 **\"Because/If/When\" Sentences (Subordinate Clauses):** When you add \"fordi\" (because), \"hvis\" (if), \"når\" (when), or \"at\" (that) to connect two ideas, the second part follows special rules: \"ikke\" goes BEFORE the action word. Pattern: *fordi + who + ikke + action word*. Example: *fordi han ikke snakker norsk* (because he does not speak Norwegian).",
         },
         {
           type: "phrase_group",
-          title: "Rule 6 — Subordinate Clauses",
+          title: "Rule 6 — \"Because/If/When\" Sentences: ikke BEFORE the Action Word",
           phrases: [
             { norwegian: "Jeg vet at han er her.", english: "I know that he is here.", phonetic: "yay veht at hahn air hair" },
             { norwegian: "Hun sier at hun ikke kan komme.", english: "She says that she cannot come.", phonetic: "hoon SEE-er at hoon IK-eh kan KOM-eh" },
@@ -745,29 +749,63 @@ export const LESSONS: Lesson[] = [
           ],
         },
         {
+          type: "tip",
+          text: "📣 **Commands (Imperativ) — Just Use the Action Word!** Giving a command in Norwegian is easy. Drop the subject and use just the \"root\" of the action word (remove the -e ending). It is super short! *Kom hit!* (Come here!) · *Snakk langsomt!* (Speak slowly!) · *Sett deg!* (Sit down!) Commands are used with friends, kids, and dogs — be polite with strangers!",
+        },
+        {
+          type: "phrase_group",
+          title: "Commands — Short and Direct!",
+          phrases: [
+            { norwegian: "Kom hit!", english: "Come here!", phonetic: "kom hit" },
+            { norwegian: "Snakk langsomt!", english: "Speak slowly!", phonetic: "snak LANG-somt" },
+            { norwegian: "Sett deg!", english: "Sit down!", phonetic: "set day" },
+            { norwegian: "Vent litt!", english: "Wait a moment!", phonetic: "vent lit" },
+            { norwegian: "Hjelp meg!", english: "Help me!", phonetic: "yelp may" },
+          ],
+        },
+        {
+          type: "tip",
+          text: "🤔 **Asking Inside a Sentence (Indirect Questions):** Sometimes a question gets hidden INSIDE a sentence. When that happens, the word order FLIPS — it goes back to normal (no switcheroo!). Compare: *Hvor bor han?* (Where does he live? — question) vs. *Jeg vet ikke hvor han bor.* (I don\'t know where he lives — hidden inside). Notice: \"han bor\" not \"bor han\"!",
+        },
+        {
+          type: "phrase_group",
+          title: "Hidden Questions Inside Sentences",
+          phrases: [
+            { norwegian: "Jeg vet ikke hvor han bor.", english: "I don't know where he lives.", phonetic: "yay veht IK-eh vor hahn boor" },
+            { norwegian: "Hun spør hva jeg heter.", english: "She asks what my name is.", phonetic: "hoon spuhr vah yay HEH-ter" },
+            { norwegian: "Jeg lurer på hvem som kommer.", english: "I wonder who is coming.", phonetic: "yay LOO-rer poh vem som KOM-er" },
+          ],
+        },
+        {
+          type: "tip",
+          text: "💡 **\"Jo\" — The Magic Word!** If someone asks a negative question like \"Don\'t you speak Norwegian?\" and the answer is actually YES, you say **Jo** instead of *Ja*! *Snakker du ikke norsk? — Jo, det gjør jeg!* (Don\'t you speak Norwegian? — Yes I do!) Think of \"Jo\" as the polite way of saying \"Yes I do, actually!\"",
+        },
+        {
           type: "dialogue",
           lines: [
             { speaker: "A", text: "Hva gjør du i dag?", translation: "What are you doing today?" },
             { speaker: "B", text: "I dag studerer jeg norsk hjemme.", translation: "Today I am studying Norwegian at home." },
             { speaker: "A", text: "Snakker du ikke norsk allerede?", translation: "Don't you speak Norwegian already?" },
-            { speaker: "B", text: "Nei, ikke ennå. Men jeg øver hver dag.", translation: "No, not yet. But I practice every day." },
+            { speaker: "B", text: "Jo, litt! Men jeg øver hver dag.", translation: "Yes, a little! But I practice every day." },
             { speaker: "A", text: "Hvorfor liker du norsk?", translation: "Why do you like Norwegian?" },
             { speaker: "B", text: "Fordi det er et vakkert språk, og jeg vil bo i Norge.", translation: "Because it is a beautiful language, and I want to live in Norway." },
+            { speaker: "A", text: "Vet du hvor Bergen er?", translation: "Do you know where Bergen is?" },
+            { speaker: "B", text: "Ja, jeg vet hvor Bergen er — det er på vestkysten!", translation: "Yes, I know where Bergen is — it's on the west coast!" },
           ],
         },
         {
           type: "tip",
-          text: "**Time–Manner–Place order:** Norwegian prefers this sequence for adverbials: WHEN → HOW → WHERE. Example: *Jeg reiser i morgen med tog til Oslo.* (I travel tomorrow by train to Oslo.) You don't have to be perfect, but this order sounds most natural.",
+          text: "⏰ **Time · How · Where Order:** When you put several describing words in a sentence, Norwegian likes them in this order: WHEN (time) → HOW (manner) → WHERE (place). Example: *Jeg reiser i morgen med tog til Oslo.* (I travel tomorrow [when] by train [how] to Oslo [where].)",
         },
       ],
       quiz: [
         {
-          question: "Which word order is correct for a basic Norwegian statement?",
+          question: "Norwegian sentences normally follow this order for Who · Action Word · What:",
           options: ["Object · Subject · Verb", "Verb · Subject · Object", "Subject · Verb · Object", "Subject · Object · Verb"],
           answer: 2,
         },
         {
-          question: "You want to say 'Today I eat lunch.' Which sentence uses correct V2 inversion?",
+          question: "You want to say 'Today I eat lunch.' Which sentence is correct?",
           options: [
             "Jeg spiser i dag lunsj.",
             "I dag jeg spiser lunsj.",
@@ -777,37 +815,72 @@ export const LESSONS: Lesson[] = [
           answer: 2,
         },
         {
-          question: "Where does 'ikke' (not) go in a main clause?",
+          question: "Someone starts a sentence with 'I går' (Yesterday). What MUST come next?",
+          options: [
+            "The object (what)",
+            "The subject (who)",
+            "The action word (verb) — always spot #2!",
+            "The word 'ikke'",
+          ],
+          answer: 2,
+        },
+        {
+          question: "Which is the RIGHT way to say 'Do you speak Norwegian?' in Norwegian?",
+          options: [
+            "Gjør du snakker norsk?",
+            "Du snakker norsk?",
+            "Snakker du norsk?",
+            "Norsk snakker du?",
+          ],
+          answer: 2,
+        },
+        {
+          question: "Where does 'ikke' (not) go in a normal sentence like 'I do not eat meat'?",
           options: [
             "Before the subject",
-            "After the verb",
+            "After the action word",
             "At the end of the sentence",
-            "Before the object",
+            "Before the action word",
           ],
           answer: 1,
         },
         {
-          question: "How do you form a yes/no question in Norwegian?",
+          question: "In a 'because/if/when' sentence, where does 'ikke' go?",
           options: [
-            "Add 'er' at the end",
-            "Put the verb first",
-            "Put the subject first with rising intonation",
-            "Use 'ikke' before the verb",
-          ],
-          answer: 1,
-        },
-        {
-          question: "Which is the correct wh-question for 'Where do you live?'",
-          options: ["Du bor hvor?", "Hvor du bor?", "Bor du hvor?", "Hvor bor du?"],
-          answer: 3,
-        },
-        {
-          question: "In a subordinate clause starting with 'fordi' (because), where does 'ikke' go?",
-          options: [
-            "After the verb",
-            "Before the verb",
+            "After the action word",
+            "Before the action word",
             "At the very end",
             "Before the conjunction",
+          ],
+          answer: 1,
+        },
+        {
+          question: "How do you give a command like 'Come here!' in Norwegian?",
+          options: [
+            "Du komme hit!",
+            "Jeg kommer hit!",
+            "Kom hit!",
+            "Kommer hit du!",
+          ],
+          answer: 2,
+        },
+        {
+          question: "Someone asks: 'Snakker du ikke norsk?' but you DO speak Norwegian. What do you say?",
+          options: [
+            "Ja, jeg snakker norsk.",
+            "Nei, jo.",
+            "Jo, det gjør jeg!",
+            "Ikke norsk.",
+          ],
+          answer: 2,
+        },
+        {
+          question: "Which sentence correctly says 'I don't know where he lives'?",
+          options: [
+            "Jeg vet ikke hvor bor han.",
+            "Jeg vet ikke hvor han bor.",
+            "Jeg vet hvor ikke han bor.",
+            "Jeg bor ikke vet hvor han.",
           ],
           answer: 1,
         },
@@ -820,36 +893,6 @@ export const LESSONS: Lesson[] = [
             "Hun sier ikke at hun kan komme.",
           ],
           answer: 1,
-        },
-        {
-          question: "'Hver dag leser han avisen.' What rule does this sentence demonstrate?",
-          options: [
-            "Verb-first questions",
-            "SVO basic order",
-            "V2 inversion — time phrase first, verb second",
-            "Subordinate clause structure",
-          ],
-          answer: 2,
-        },
-        {
-          question: "What is the correct preferred order for adverbials in Norwegian?",
-          options: [
-            "Place · Time · Manner",
-            "Manner · Place · Time",
-            "Time · Place · Manner",
-            "Time · Manner · Place",
-          ],
-          answer: 3,
-        },
-        {
-          question: "Which sentence correctly translates 'I learn Norwegian because I love Norway'?",
-          options: [
-            "Jeg lærer norsk fordi jeg elsker Norge.",
-            "Fordi jeg elsker Norge, norsk lærer jeg.",
-            "Jeg lærer norsk, fordi elsker jeg Norge.",
-            "Norsk fordi jeg lærer elsker jeg Norge.",
-          ],
-          answer: 0,
         },
       ],
     },

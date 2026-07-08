@@ -214,14 +214,13 @@ export default function Grammar() {
         </div>
         <div className="bg-gradient-to-br from-primary/8 via-primary/4 to-transparent border border-primary/30 rounded-2xl p-5 space-y-5">
 
-          {/* Intro callout */}
+          {/* Hero intro */}
           <div className="flex items-start gap-3">
             <div className="text-2xl">📐</div>
             <div>
-              <div className="font-bold text-foreground text-sm">The V2 Rule — Verbandreregelen</div>
+              <div className="font-bold text-foreground text-sm">The Action Word is Like a Magnet 🧲</div>
               <div className="text-sm text-muted-foreground mt-1 leading-relaxed">
-                In Norwegian, <strong className="text-foreground">the verb always comes second</strong> in a main clause — no matter what appears first.
-                This is the single most important rule in Norwegian grammar.
+                In Norwegian, <strong className="text-foreground">the action word (verb) always sticks to spot #2</strong> — no matter what. If you put a time word first, the action word still comes second. This is the most important rule in all of Norwegian!
               </div>
               <Link href="/lessons/14">
                 <span className="inline-flex items-center gap-1 mt-2 text-xs font-semibold text-primary hover:underline cursor-pointer">
@@ -231,13 +230,53 @@ export default function Grammar() {
             </div>
           </div>
 
+          {/* Sentence Blueprint (setningsskjema) */}
+          <GrammarCard title="The Sentence Blueprint — Setningsskjema" subtitle="Every Norwegian sentence fits into these slots" defaultOpen>
+            <div className="space-y-4">
+              <TipBox>
+                Think of a Norwegian sentence as a train with 7 cars. Each car has its own job. The <strong>action word always rides in car #2</strong>. 🚂
+              </TipBox>
+              {/* Slot header row */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-xs border-collapse min-w-[500px]">
+                  <thead>
+                    <tr>
+                      {["① Front", "② Action Word", "③ Who", "④ ikke/aldri", "⑤ Extra Verb", "⑥ Object", "⑦ When/Where"].map((h, i) => (
+                        <th key={h} className={`px-2 py-2 text-center font-bold border border-border/60 ${i === 1 ? "bg-primary/20 text-primary" : "bg-muted/40 text-muted-foreground"}`}>
+                          {h}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      ["Jeg", "spiser", "—", "—", "—", "fisk", "hver dag"],
+                      ["I dag", "har", "vi", "ikke", "sett", "filmen", "—"],
+                      ["Spiser", "—", "du", "—", "—", "fisk?", "—"],
+                      ["Hvorfor", "gråter", "han", "—", "—", "—", "—"],
+                    ].map((row, ri) => (
+                      <tr key={ri} className={ri % 2 === 0 ? "bg-card/50" : "bg-muted/20"}>
+                        {row.map((cell, ci) => (
+                          <td key={ci} className={`px-2 py-1.5 text-center border border-border/40 ${ci === 1 ? "font-bold text-primary" : "text-foreground"} ${cell === "—" ? "text-muted-foreground/40" : ""}`}>
+                            {cell}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="text-xs text-muted-foreground italic text-center">Row 2: "I dag har vi ikke sett filmen." = Today we have not seen the movie.</div>
+            </div>
+          </GrammarCard>
+
           {/* Rule 1: SVO */}
-          <GrammarCard title="Rule 1 — Basic SVO: Subject · Verb · Object" subtitle="The default order when the subject starts the sentence" defaultOpen>
+          <GrammarCard title="Rule 1 — Basic Blueprint: Who · Action Word · What" subtitle="The normal order when the subject (who) starts the sentence" defaultOpen>
             <div className="space-y-4">
               <WordOrderDiagram parts={[
-                { label: "Jeg",    role: "Subject" },
-                { label: "spiser", role: "Verb", accent: true },
-                { label: "et eple",role: "Object" },
+                { label: "Jeg",    role: "Who (Subject)" },
+                { label: "spiser", role: "② Action Word", accent: true },
+                { label: "et eple",role: "What (Object)" },
               ]} />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
                 {[
@@ -258,29 +297,29 @@ export default function Grammar() {
             </div>
           </GrammarCard>
 
-          {/* Rule 2: Inversion */}
-          <GrammarCard title="Rule 2 — Inversion: Any Fronted Element + Verb Second" subtitle="When time/place/adverb leads, subject and verb swap" defaultOpen>
+          {/* Rule 2: Inversion / The Switcheroo */}
+          <GrammarCard title="Rule 2 — The Switcheroo! 🔀" subtitle="When time/place goes first, swap the action word and 'who' — verb stays at #2" defaultOpen>
             <div className="space-y-4">
               <TipBox>
-                If anything other than the subject starts the sentence, <strong>invert</strong> the subject and verb so the verb stays in position 2.
+                No matter what you put at the start of a sentence, the <strong>action word always comes second. Always. No exceptions.</strong> So if you move a time word to the front, the "who" word hops to spot #3. This swap is called <em>inversion</em>.
               </TipBox>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Normal SVO</div>
+                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Normal Order</div>
                   <WordOrderDiagram parts={[
-                    { label: "Jeg",    role: "Subject" },
-                    { label: "spiser", role: "Verb ②", accent: true },
-                    { label: "lunsj",  role: "Object" },
+                    { label: "Jeg",    role: "① Who" },
+                    { label: "spiser", role: "② Action", accent: true },
+                    { label: "lunsj",  role: "What" },
                     { label: "i dag",  role: "Time" },
                   ]} />
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-primary uppercase tracking-wide mb-2">Inverted (time first)</div>
+                  <div className="text-xs font-semibold text-primary uppercase tracking-wide mb-2">After Switcheroo (time first)</div>
                   <WordOrderDiagram parts={[
-                    { label: "I dag",  role: "Time ①", accent: false },
-                    { label: "spiser", role: "Verb ②", accent: true },
-                    { label: "jeg",    role: "Subject ③" },
-                    { label: "lunsj",  role: "Object" },
+                    { label: "I dag",  role: "① Time", accent: false },
+                    { label: "spiser", role: "② Action", accent: true },
+                    { label: "jeg",    role: "③ Who" },
+                    { label: "lunsj",  role: "What" },
                   ]} />
                 </div>
               </div>
@@ -304,15 +343,18 @@ export default function Grammar() {
           </GrammarCard>
 
           {/* Rule 3: Questions */}
-          <GrammarCard title="Rule 3 — Questions" subtitle="Yes/No: verb first · Wh-questions: question word then verb">
+          <GrammarCard title="Rule 3 — Questions" subtitle="Yes/No: action word first · Question words: hva/hvor/hvem then action word">
             <div className="space-y-4">
+              <TipBox>
+                Norwegian has <strong>no "do" helper word</strong> in questions! Just put the action word first for yes/no questions. 🚫 Don't say "Gjør du snakker norsk?" — just say "Snakker du norsk?"
+              </TipBox>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Yes/No — Verb First</div>
+                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Yes/No — Action Word First!</div>
                   <WordOrderDiagram parts={[
-                    { label: "Liker", role: "Verb ①", accent: true },
-                    { label: "du",    role: "Subject" },
-                    { label: "kaffe?",role: "Object" },
+                    { label: "Liker", role: "① Action", accent: true },
+                    { label: "du",    role: "② Who" },
+                    { label: "kaffe?",role: "What" },
                   ]} />
                   <div className="space-y-1.5 mt-3">
                     {[
@@ -331,11 +373,11 @@ export default function Grammar() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Wh-Questions</div>
+                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Question Words — Then Action Word</div>
                   <WordOrderDiagram parts={[
-                    { label: "Hvor", role: "Wh-word" },
-                    { label: "bor",  role: "Verb ②", accent: true },
-                    { label: "du?",  role: "Subject" },
+                    { label: "Hvor", role: "Question word" },
+                    { label: "bor",  role: "② Action", accent: true },
+                    { label: "du?",  role: "Who" },
                   ]} />
                   <div className="space-y-1.5 mt-3">
                     {[
@@ -358,16 +400,21 @@ export default function Grammar() {
           </GrammarCard>
 
           {/* Rule 4: Negation */}
-          <GrammarCard title="Rule 4 — Negation with 'ikke'" subtitle="After verb in main clause · Before verb in subordinate clause">
+          <GrammarCard title="Rule 4 — Saying 'Not' with ikke ❌" subtitle="The ikke Test: main sentence → verb THEN ikke · because/if/when → ikke THEN verb">
             <div className="space-y-4">
+              <TipBox>
+                <strong>The ikke Test:</strong> Where does "ikke" go? It tells you which type of sentence you are in!
+                Normal sentence → action word first, then "ikke". &nbsp;
+                "Because/if/when" sentence → "ikke" before the action word.
+              </TipBox>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-2">Main clause — ikke after verb</div>
+                  <div className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-2">✅ Normal sentence — action word, THEN ikke</div>
                   <WordOrderDiagram parts={[
-                    { label: "Jeg",    role: "Subject" },
-                    { label: "spiser", role: "Verb", accent: true },
-                    { label: "ikke",   role: "Negation", accent: false },
-                    { label: "kjøtt.",  role: "Object" },
+                    { label: "Jeg",    role: "Who" },
+                    { label: "spiser", role: "Action", accent: true },
+                    { label: "ikke",   role: "not", accent: false },
+                    { label: "kjøtt.", role: "What" },
                   ]} />
                   <div className="space-y-1.5 mt-3">
                     {[
@@ -386,12 +433,12 @@ export default function Grammar() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 uppercase tracking-wide mb-2">Subordinate clause — ikke before verb</div>
+                  <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 uppercase tracking-wide mb-2">⚠️ Because/if/when — ikke BEFORE action word</div>
                   <WordOrderDiagram parts={[
-                    { label: "at hun",  role: "Conj + Subj" },
-                    { label: "ikke",    role: "Negation", accent: false },
-                    { label: "kan",     role: "Verb", accent: true },
-                    { label: "komme",   role: "Inf." },
+                    { label: "at hun",  role: "conj + who" },
+                    { label: "ikke",    role: "not", accent: false },
+                    { label: "kan",     role: "Action", accent: true },
+                    { label: "komme",   role: "Infinitive" },
                   ]} />
                   <div className="space-y-1.5 mt-3">
                     {[
@@ -413,19 +460,167 @@ export default function Grammar() {
             </div>
           </GrammarCard>
 
+          {/* Commands */}
+          <GrammarCard title="Commands — Imperativ 📣" subtitle="Drop the subject, use just the root of the action word">
+            <div className="space-y-3">
+              <TipBox>
+                Commands are <strong>super simple</strong>! Just take the action word, drop the <em>-e</em> ending, and you're done. No subject needed! <em>å snakke</em> → <strong>Snakk!</strong> · <em>å komme</em> → <strong>Kom!</strong>
+              </TipBox>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                {[
+                  ["Kom hit!", "Come here!"],
+                  ["Snakk langsomt!", "Speak slowly!"],
+                  ["Sett deg!", "Sit down!"],
+                  ["Vent litt!", "Wait a moment!"],
+                  ["Hjelp meg!", "Help me!"],
+                  ["Vær så snill!", "Please! (be so kind)"],
+                ].map(([no, en]) => (
+                  <div key={no} className="flex items-center gap-2 bg-card/70 rounded-lg px-3 py-2 border border-border/60">
+                    <div className="flex-1">
+                      <div className="font-medium text-foreground">{no}</div>
+                      <div className="text-xs text-muted-foreground italic">{en}</div>
+                    </div>
+                    <SpeakButton text={no} size="sm" rate={0.85} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </GrammarCard>
+
+          {/* Hidden Questions (Indirect) */}
+          <GrammarCard title="Hidden Questions Inside Sentences 🤔" subtitle="When a question hides inside another sentence, word order flips back to normal">
+            <div className="space-y-3">
+              <TipBox>
+                A question by itself: <em>Hvor bor han?</em> (Where does he live?) — action word second. <br />
+                The same question hidden inside: <em>Jeg vet ikke <strong>hvor han bor</strong>.</em> — now "han bor" (normal order)! The switcheroo does NOT happen inside hidden questions.
+              </TipBox>
+              <div className="grid grid-cols-1 gap-2 text-sm">
+                {[
+                  ["Jeg vet ikke hvor han bor.", "I don't know where he lives."],
+                  ["Hun spør hva jeg heter.", "She asks what my name is."],
+                  ["Jeg lurer på hvem som kommer.", "I wonder who is coming."],
+                ].map(([no, en]) => (
+                  <div key={no} className="flex items-center gap-2 bg-card/70 rounded-lg px-3 py-2 border border-border/60">
+                    <div className="flex-1">
+                      <div className="font-medium text-foreground">{no}</div>
+                      <div className="text-xs text-muted-foreground italic">{en}</div>
+                    </div>
+                    <SpeakButton text={no} size="sm" rate={0.85} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </GrammarCard>
+
+          {/* Jo — Magic Word */}
+          <GrammarCard title="The Magic Word: Jo! 💡" subtitle="Say Jo (not Ja) when you want to contradict a negative question">
+            <div className="space-y-3">
+              <TipBox>
+                If someone says "Don't you...?" or "Aren't you...?" and the answer is actually YES — say <strong>Jo!</strong> not <em>Ja</em>. <em>Ja</em> agrees with a normal question. <em>Jo</em> pushes back on a negative question. Think of it as "Yes I do, actually!"
+              </TipBox>
+              <div className="grid grid-cols-1 gap-2 text-sm">
+                {[
+                  { q: "Snakker du ikke norsk?", a: "Jo, det gjør jeg!", qEn: "Don't you speak Norwegian?", aEn: "Yes I do!" },
+                  { q: "Liker du ikke kaffe?", a: "Jo, jeg liker kaffe!", qEn: "Don't you like coffee?", aEn: "Yes, I like coffee!" },
+                  { q: "Er du ikke norsk?", a: "Jo, jeg er norsk!", qEn: "Aren't you Norwegian?", aEn: "Yes, I am Norwegian!" },
+                ].map(({ q, a, qEn, aEn }) => (
+                  <div key={q} className="bg-card/70 rounded-lg px-3 py-2.5 border border-border/60 space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-muted-foreground w-4">Q:</span>
+                      <div className="flex-1">
+                        <span className="font-medium text-foreground">{q}</span>
+                        <span className="text-xs text-muted-foreground italic ml-2">({qEn})</span>
+                      </div>
+                      <SpeakButton text={q} size="sm" rate={0.85} />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-primary w-4">Jo:</span>
+                      <div className="flex-1">
+                        <span className="font-medium text-primary">{a}</span>
+                        <span className="text-xs text-muted-foreground italic ml-2">({aEn})</span>
+                      </div>
+                      <SpeakButton text={a} size="sm" rate={0.85} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </GrammarCard>
+
+          {/* 5 Classic Pitfalls */}
+          <GrammarCard title="5 Classic Mistakes — Don't Fall In! ⚠️" subtitle="The most common word order errors — and how to fix them">
+            <div className="space-y-3">
+              {[
+                {
+                  label: "Forgetting the switcheroo after a time word",
+                  wrong: "I går jeg så filmen.",
+                  right: "I går så jeg filmen.",
+                  tip: "Time word first → action word must be second!",
+                },
+                {
+                  label: "Normal order after 'fordi/at/hvis'",
+                  wrong: "fordi han kommer ikke",
+                  right: "fordi han ikke kommer",
+                  tip: "In 'because/if' sentences, ikke goes BEFORE the action word.",
+                },
+                {
+                  label: "Adding 'do' to questions (English habit!)",
+                  wrong: "Gjør du snakker norsk?",
+                  right: "Snakker du norsk?",
+                  tip: "Norwegian has NO 'do' helper. Just flip the action word to front.",
+                },
+                {
+                  label: "Switcheroo in hidden questions",
+                  wrong: "Jeg vet ikke hva er det.",
+                  right: "Jeg vet ikke hva det er.",
+                  tip: "Hidden questions use normal order — no switcheroo inside!",
+                },
+                {
+                  label: "Two things before the action word",
+                  wrong: "I morgen vi reiser til Oslo.",
+                  right: "I morgen reiser vi til Oslo.",
+                  tip: "Only ONE thing can go before the action word. Ever.",
+                },
+              ].map(({ label, wrong, right, tip }) => (
+                <div key={label} className="bg-muted/30 rounded-xl p-3 space-y-2">
+                  <div className="text-xs font-bold text-foreground">⚠️ {label}</div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div className="bg-red-500/10 border border-red-500/30 rounded-lg px-3 py-1.5">
+                      <div className="text-[10px] font-bold text-red-500 uppercase tracking-wide mb-0.5">✗ Wrong</div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-sm text-foreground font-medium">{wrong}</span>
+                        <SpeakButton text={wrong} size="sm" rate={0.85} />
+                      </div>
+                    </div>
+                    <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg px-3 py-1.5">
+                      <div className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wide mb-0.5">✓ Right</div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-sm text-foreground font-medium">{right}</span>
+                        <SpeakButton text={right} size="sm" rate={0.85} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-xs text-muted-foreground italic">💡 {tip}</div>
+                </div>
+              ))}
+            </div>
+          </GrammarCard>
+
           {/* Quick cheat-sheet */}
           <div className="bg-card/80 border border-border rounded-xl p-4">
             <div className="font-semibold text-foreground text-sm mb-3">Quick Cheat Sheet — Hurtigoversikt</div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {[
-                { rule: "Basic statement",    pattern: "Subject → Verb → Object",              ex: "Jeg spiser mat." },
-                { rule: "Inversion",          pattern: "[Adverb] → Verb → Subject → ...",       ex: "I dag spiser jeg mat." },
-                { rule: "Yes/No question",    pattern: "Verb → Subject → Object?",              ex: "Spiser du mat?" },
-                { rule: "Wh-question",        pattern: "Wh-word → Verb → Subject?",             ex: "Hva spiser du?" },
-                { rule: "Negation (main)",    pattern: "Subject → Verb → ikke → ...",           ex: "Jeg spiser ikke kjøtt." },
-                { rule: "Negation (sub)",     pattern: "Conj → Subject → ikke → Verb",          ex: "...at hun ikke spiser kjøtt." },
-                { rule: "Adverbial order",    pattern: "Time → Manner → Place",                  ex: "I morgen med tog til Oslo." },
-                { rule: "Subordinate clause", pattern: "Conj + Subject + [ikke] + Verb (+ rest)",ex: "fordi jeg elsker Norge." },
+                { rule: "Normal sentence",     pattern: "Who → Action Word → What",                  ex: "Jeg spiser mat." },
+                { rule: "The Switcheroo",       pattern: "[Time/Place] → Action Word → Who → ...",    ex: "I dag spiser jeg mat." },
+                { rule: "Yes/No question",      pattern: "Action Word → Who → What?",                 ex: "Spiser du mat?" },
+                { rule: "Question word",        pattern: "Hva/Hvor/... → Action Word → Who?",         ex: "Hva spiser du?" },
+                { rule: "ikke (normal)",        pattern: "Who → Action Word → ikke → ...",            ex: "Jeg spiser ikke kjøtt." },
+                { rule: "ikke (because/if)",    pattern: "Conj → Who → ikke → Action Word",           ex: "...at hun ikke spiser kjøtt." },
+                { rule: "Commands",             pattern: "Action Word root only! (no subject)",        ex: "Snakk! / Kom! / Vent!" },
+                { rule: "Jo (magic yes!)",      pattern: "Use Jo to contradict a negative question",  ex: "Snakker du ikke norsk? — Jo!" },
+                { rule: "Hidden questions",     pattern: "Normal order inside — no switcheroo",       ex: "Jeg vet ikke hvor han bor." },
+                { rule: "Time order",           pattern: "When → How → Where",                        ex: "I morgen med tog til Oslo." },
               ].map(({ rule, pattern, ex }) => (
                 <div key={rule} className="bg-muted/30 rounded-lg px-3 py-2.5 space-y-0.5">
                   <div className="text-xs font-bold text-primary">{rule}</div>
@@ -441,6 +636,7 @@ export default function Grammar() {
 
         </div>
       </section>
+
 
       <section>
         <h2 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3 px-1">Verb Conjugation — Verbkonjugasjon</h2>
